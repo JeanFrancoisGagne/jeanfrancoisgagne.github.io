@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /prototypes/
+Disallow: /content/
+Disallow: /scripts/
+Sitemap: https://www.jfgagne.com/sitemap.xml
