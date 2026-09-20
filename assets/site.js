@@ -78,7 +78,7 @@
         }
       });
     });
-    header.addEventListener('keydown', event => {
+    document.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
       const open = groups.find(group => group.classList.contains('is-open'));
       if (open) {
