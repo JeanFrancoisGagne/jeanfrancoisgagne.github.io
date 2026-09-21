@@ -73,6 +73,21 @@
     banner.hidden = choice !== null;
     start();
   }
+  // Clicks express intent, not completed inquiries, downloads, or conversions.
+  // Do not queue clicks made before consent or collect arbitrary DOM/URL text.
+  document.addEventListener('click', event => {
+    if (!production || !loaded || choice !== 'granted' || event.defaultPrevented) return;
+    const action = event.target?.closest?.('a[data-measure-action]')?.dataset.measureAction;
+    if (action === 'contact_email') {
+      window.gtag('event', 'contact_intent', {send_to: id, method: 'email'});
+    } else if (action === 'project_crapkit' || action === 'research_report') {
+      window.gtag('event', 'select_content', {
+        send_to: id,
+        content_type: action === 'project_crapkit' ? 'project' : 'research',
+        item_id: action === 'project_crapkit' ? 'crapkit' : 'historical_report'
+      });
+    }
+  });
   document.querySelectorAll('[data-analytics-settings]').forEach(button => {
     button.hidden = false;
     button.addEventListener('click', () => {

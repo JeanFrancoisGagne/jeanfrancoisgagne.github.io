@@ -319,7 +319,9 @@ html[lang="fr"] .hero h1 em{display:inline-block;max-width:1100px}
 }
 .research-citation .small{font-size:.9rem;color:var(--muted,#52647a)}
 
-/* Selected navigation direction: four groups, with individual disclosures. */
+/* Selected navigation direction: four groups, with individual disclosures.
+   The head marker applies collapsed navigation before first paint. Without JS
+   (or if its deferred bundle fails), the base styles expose every link. */
 @layer responsive {
  .site-header.site-header-grouped{display:block;width:100%;min-height:0;margin:0;padding:28px max(32px,calc((100vw - 1320px)/2)) 0;position:relative;z-index:40;border-bottom:1px solid var(--line);background:linear-gradient(var(--paper),#eaf0f7)}
  .site-header-grouped .header-identity{display:flex;align-items:center;justify-content:space-between;gap:24px}
@@ -341,8 +343,8 @@ html[lang="fr"] .hero h1 em{display:inline-block;max-width:1100px}
  .site-header-grouped .nav-submenu a:hover,.site-header-grouped .nav-submenu a:focus-visible{background:var(--light);color:var(--blue)}
  .site-header-grouped .nav-submenu a[aria-current]{color:var(--blue);background:#edf2fb;text-decoration:underline;text-underline-offset:4px}
  .site-header-grouped .nav-submenu a[aria-current]::after{display:none}
- .site-header-grouped.navigation-ready .nav-submenu{display:none;position:absolute;top:100%;left:-13px;right:-13px;padding:12px;background:var(--white);border:1px solid var(--line);border-radius:0 0 14px 14px;box-shadow:0 16px 28px #142f481c;z-index:45}
- .site-header-grouped.navigation-ready .nav-group.is-open>.nav-submenu{display:grid}
+ html.js-enabled .site-header-grouped .nav-submenu{display:none;position:absolute;top:100%;left:-13px;right:-13px;padding:12px;background:var(--white);border:1px solid var(--line);border-radius:0 0 14px 14px;box-shadow:0 16px 28px #142f481c;z-index:45}
+ html.js-enabled .site-header-grouped .nav-group.is-open>.nav-submenu{display:grid}
  @media(max-width:1100px) and (min-width:901px){.site-header-grouped nav.grouped-navigation{gap:18px}.site-header-grouped .nav-group-toggle{font-size:17px;gap:9px}.site-header-grouped .brand{font-size:23px}}
  @media(max-width:900px){
   .site-header.site-header-grouped{padding:20px 24px 0}
@@ -352,15 +354,15 @@ html[lang="fr"] .hero h1 em{display:inline-block;max-width:1100px}
   .site-header-grouped .language-short{display:inline}
   .site-header-grouped .language-switch{padding:2px}
   .site-header-grouped .language-switch a{padding:5px 10px;min-width:38px;min-height:38px;font-size:11px}
-  .site-header-grouped.navigation-ready .menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;padding:14px 0;min-height:52px;margin-top:14px;border-top:1px solid var(--line);border-radius:0;font-size:14px;line-height:1.5;font-weight:650}
+  html.js-enabled .site-header-grouped .menu-toggle{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;padding:14px 0;min-height:52px;margin-top:14px;border-top:1px solid var(--line);border-radius:0;font-size:14px;line-height:1.5;font-weight:650}
   .site-header-grouped .menu-toggle>span{margin:0;font-size:inherit}
   .site-header-grouped .menu-toggle>.menu-symbol{font-size:22px;font-weight:400;line-height:1;transition:transform .15s ease}
   .site-header-grouped .menu-toggle[aria-expanded=true]>.menu-symbol{transform:rotate(45deg)}
   .site-header-grouped nav.grouped-navigation{grid-template-columns:1fr;gap:0;margin:14px 0 0;padding:0 0 14px}
-  .site-header-grouped.navigation-ready nav.grouped-navigation{display:none;margin:0}
-  .site-header-grouped.navigation-ready nav.grouped-navigation.is-open{display:grid}
+  html.js-enabled .site-header-grouped nav.grouped-navigation{display:none;margin:0}
+  html.js-enabled .site-header-grouped nav.grouped-navigation.is-open{display:grid}
   .site-header-grouped .nav-group-toggle{font-size:17px;min-height:58px;padding:15px 0;gap:14px}
-  .site-header-grouped .nav-submenu,.site-header-grouped.navigation-ready .nav-submenu{position:static;padding:0 0 16px 25px;background:transparent;border:0;box-shadow:none;border-radius:0;gap:2px}
+  .site-header-grouped .nav-submenu,html.js-enabled .site-header-grouped .nav-submenu{position:static;padding:0 0 16px 25px;background:transparent;border:0;box-shadow:none;border-radius:0;gap:2px}
   .site-header-grouped .nav-submenu a{font-size:15px;padding:11px 12px;min-height:44px}
  }
  @media(max-width:480px){

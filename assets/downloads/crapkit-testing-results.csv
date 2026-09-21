@@ -1,0 +1,9 @@
+path,function,complexity,coverage_before,coverage_after,crap_before,crap_after
+calc/grade.py,grade( score ),3,0.0,1.0,12.0,3.0
+calc/grade.py,summarize( rows ),2,0.0,1.0,6.0,2.0
+calc/parse.py,coerce( word ),5,0.6666666666666666,1.0,5.9259259259259265,5.0
+calc/parse.py,"read_row( line , cols )",6,0.6666666666666666,1.0,7.333333333333334,6.0
+calc/parse.py,"parse( text , cols )",3,1.0,1.0,3.0,3.0
+calc/report.py,"tally( rows , low , high )",4,1.0,1.0,4.0,4.0
+calc/report.py,"render( bins , width )",2,1.0,1.0,2.0,2.0
+calc/report.py,"banner( bins , total )",4,0.0,1.0,20.0,4.0
