@@ -1,7 +1,8 @@
 (() => {
   'use strict';
   const french = document.documentElement.lang === 'fr';
-  const languageLinks = [...document.querySelectorAll('.language-switch a,.language-links a,.translation-link')];
+  const languageLinks = [...document.querySelectorAll('.language-switch a,.language-links a,.translation-link')]
+    .filter(link => link.tagName === 'A' && link.hasAttribute('href') && link.getAttribute('aria-disabled') !== 'true');
   languageLinks.forEach(link => { link.dataset.languagePath = new URL(link.href).pathname; });
   function updateLanguageLinks() {
     const query = new URLSearchParams(location.search);
@@ -11,7 +12,7 @@
     languageLinks.forEach(link => {
       const target = new URL(link.dataset.languagePath, location.origin);
       target.search = query.toString();
-      if (fragment && link.dataset.fragments.split(' ').includes(fragment)) target.hash = fragment;
+      if (fragment && (link.dataset.fragments || '').split(/\s+/).includes(fragment)) target.hash = fragment;
       link.href = target.pathname + target.search + target.hash;
     });
   }
